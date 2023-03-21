@@ -27,7 +27,7 @@ Using [Composer](http://getcomposer.org), add `monkdev/monkcms` to your
 ```json
 {
   "require": {
-    "monkdev/monkcms": "~0.5"
+    "monkdev/monkcms": "~0.6"
   }
 }
 ```
@@ -39,7 +39,7 @@ $ composer update
 Or:
 
 ```bash
-$ composer require monkdev/monkcms:~0.5
+$ composer require monkdev/monkcms:~0.6
 ```
 
 ### Configure
@@ -125,6 +125,45 @@ in associative array form. So, for example, a sermon's title can be accessed at
 `$content['show']['title']`.
 
 If a failure occurs, `get` throws a `Monk\Cms\Exception`.
+
+### Multiple shows
+
+If you want to use `show` key to format API output, there are 2 ways
+
+#### 1. Using inline string
+
+For example:
+
+```php
+$cms->get(array(
+  'module'  => 'smallgroup',
+  'display' => 'list',
+  'order' => 'recent',
+  'emailencode' => 'no',
+  'howmany' => 1,
+  'page' => 1,
+  'show' => "___starttime format='g:ia'__ __endtime format='g:ia'__",
+));
+```
+
+#### 2. Using an array
+
+For example:
+
+```php
+$cms->get(array(
+  'module'  => 'smallgroup',
+  'display' => 'list',
+  'order' => 'recent',
+  'emailencode' => 'no',
+  'howmany' => 1,
+  'page' => 1,
+  'show' => [
+    "__starttime format='g:ia'__",
+    "__endtime format='g:ia'__"
+  ]
+));
+```
 
 Development
 -----------
