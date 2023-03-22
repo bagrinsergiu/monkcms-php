@@ -27,7 +27,7 @@ class Cms
         'siteSecret' => null,
         'cmsCode'    => 'EKK',
         'cmsType'    => 'CMS',
-        'url'        => 'https://streaming.cms-staging-api.monkcms.com'
+        'url'        => 'http://api.monkcms.com'
     );
 
     /**
